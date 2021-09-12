@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Billboard implements Serializable {
 	
-	private static final long serialVersionUID = 1;
+	private static final long serialVersionUID = 1L;
 	private double width;
 	private double height;
 	private boolean inUse;
@@ -16,8 +16,8 @@ public class Billboard implements Serializable {
 		this.height = height;
 		this.inUse = inUse;
 		this.brand = brand;
-		
 	}
+	
 
 	public double getWidth() {
 		return width;

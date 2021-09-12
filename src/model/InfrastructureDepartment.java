@@ -15,19 +15,27 @@ import java.util.List;
 
 public class InfrastructureDepartment {
 	
-	private String BILDBOARD_FILE_NAME = "data/BillboardDataExported.csv";
+	private final String BILDBOARD_FILE_NAME = "data/BillboardDataExported.csv";
+	private final String FILE_REPORT_PATH = "data/report.txt";
+	private final String FILE_SAVE_PATH = "data/SecretCode.danger";
+	
 	private String separatorCharacter = "\\|";
+	
 	private List<Billboard> list;
 	
-	public InfrastructureDepartment() {
+	
+	//Constructor
+	public InfrastructureDepartment() throws IOException {
 		list=new ArrayList<Billboard>();
+		importData(BILDBOARD_FILE_NAME);
+		//exportDangerousBillboardReport(FILE_REPORT_PATH);
 	}
 
-	/*
-	public ArrayList<Billboard> getBillboards() {
+	
+	public List<Billboard> getBillboards() {
 		return list;
 	}
-	*/
+	
 	
 	public void setBillboards(ArrayList<Billboard> billboards) {
 		this.list = billboards;
@@ -42,15 +50,16 @@ public class InfrastructureDepartment {
 		saveBillboards() ;
 	}
 	
-	public void saveBillboards() throws IOException{
-	    ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(BILDBOARD_FILE_NAME));
+	
+	private void saveBillboards() throws IOException{
+	    ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_SAVE_PATH));
 	    oos.writeObject(list);
 	    oos.close();
-	 }
+	}
 	
 	@SuppressWarnings("unchecked")
 	public boolean loadBillboards() throws IOException, ClassNotFoundException{
-	    File f = new File(BILDBOARD_FILE_NAME);
+	    File f = new File(FILE_SAVE_PATH);
 	    boolean loaded = false;
 	    if(f.exists()){
 	      ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
@@ -59,7 +68,7 @@ public class InfrastructureDepartment {
 	      loaded = true;
 	    }
 	    return loaded;
-	  }
+	}
 	
 	
 	public void exportDangerousBillboardReport(String fileName) throws FileNotFoundException{
@@ -108,14 +117,16 @@ public class InfrastructureDepartment {
 	
 	
 	//to String
-		public String toString(){
-
-			String answer = "\nNombres: ";
+	public String toString() {
+		String answer= "";
+		answer+="w		h		inUse		Brand\n";
+		for (int i = 0; i<list.size(); i++) {
+			answer+=(list.get(i).getWidth()+"		"+list.get(i).getHeight()+"		"+list.get(i).isInUse()+"		"+list.get(i).getBrand()+"		\n");;
 			
-
-
-			return answer;
 		}
+		answer+="TOTAL: "+ list.size() + " vallas";
+		return answer;
+	}
 	
 	
 
