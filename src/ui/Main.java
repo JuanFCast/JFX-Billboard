@@ -25,26 +25,27 @@ public class Main {
 		System.out.println("------------------------------------------");
 		System.out.println("---------WELCOME TO THE BILLBOARD---------");
 		System.out.println("------------------------------------------");
-		System.out.println("Please, choose the service you want to enter:"
-				+ " \n(1) Add new Billboard"
-				+ " \n(2) Show city Billboards"
-				+ " \n(3) Report on the danger of fences that exceed 162 cm^2"
-				+ " \n(5) To exit");
+		
 		
 		do {
+			System.out.println("Please, choose the service you want to enter:"
+					+ " \n(1) Add new Billboard"
+					+ " \n(2) Show city Billboards"
+					+ " \n(3) Report on the danger of Billboards that exceed 160 cm^2"
+					+ " \n(5) To exit");
 			System.out.print("Option: ");
 			line = ppal.br.readLine();
 			option = Integer.parseInt(line);
 			
 			switch(option) {
 			case 1:
-				//ppal.addNewBillboard();
+				ppal.addNewBillboard();
 				break;
 			case 2:
 				ppal.showBillboard();
 				break;
 			case 3:
-				//ppal.printReport();
+				ppal.printReport();
 				break;
 			case 5:
 				System.out.println("\n\n\n---------------------"
@@ -56,9 +57,38 @@ public class Main {
 		}while(option != EXIT_OPTION);
 	}
 	
+	public void addNewBillboard() throws IOException {
+		System.out.println("\n===============================\n    Billboard Formulary    \n===============================\n");
+		System.out.println("Please fill the following fields about the new Billboard");
+		System.out.print("Weight: ");
+		String w = br.readLine();
+		System.out.print("Height: ");
+		String h = br.readLine();
+		System.out.print("Is in Use?: ");
+		String use = br.readLine();
+		System.out.print("What is the brand of the Billboard: ");
+		String brand = br.readLine();
+		
+		double weight = Double.parseDouble(w);
+		double height = Double.parseDouble(h);
+		boolean inUse = Boolean.parseBoolean(use);
+		
+		if(infra.addBillboard(weight, height, inUse, brand)) {
+			System.out.println("The billboard has been added successfully");
+		} else {
+			System.out.println("An error occurred while registering the new Billboard");
+		}
+		
+	}
+	
+	
 	
 	public void showBillboard() {
 		System.out.println(infra.toString());
+	}
+	
+	public void printReport() throws IOException {
+		System.out.println(infra.exportDangerousBillboardReport());
 	}
 	
 	
