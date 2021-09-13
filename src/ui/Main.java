@@ -58,15 +58,17 @@ public class Main {
 	}
 	
 	public void addNewBillboard() throws IOException {
-		System.out.println("\n===============================\n    Billboard Formulary    \n===============================\n");
-		System.out.println("Please fill the following fields about the new Billboard");
-		System.out.print("Weight: ");
+		System.out.println("\n-------------------------------"
+				+ "\n------Add New Billboard------"
+				+ "\n-------------------------------\n");
+		System.out.println("Please enter the details of the new Billboard");
+		System.out.print("Width: ");
 		String w = br.readLine();
 		System.out.print("Height: ");
 		String h = br.readLine();
-		System.out.print("Is in Use?: ");
+		System.out.print("This Billboard is in use: ");
 		String use = br.readLine();
-		System.out.print("What is the brand of the Billboard: ");
+		System.out.print("Enter the name of the new Billboard: ");
 		String brand = br.readLine();
 		
 		double width = Double.parseDouble(w);
@@ -74,9 +76,9 @@ public class Main {
 		boolean inUse = Boolean.parseBoolean(use);
 		
 		if(infra.addBillboard(width, height, inUse, brand)) {
-			System.out.println("The billboard has been added successfully");
+			System.out.println("The brand Billboard "+ brand + " was successfully added ;D\n");
 		} else {
-			System.out.println("An error occurred while registering the new Billboard");
+			System.out.println("Try again D:\n");
 		}
 		
 	}

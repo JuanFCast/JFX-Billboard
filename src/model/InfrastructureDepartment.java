@@ -101,6 +101,7 @@ public class InfrastructureDepartment {
 		fw.write(report);
 
 		fw.close();
+		report+="TOTAL: "+ (j-1) + " Billboards\n";
 		return report;
 		
 	}
@@ -133,7 +134,7 @@ public class InfrastructureDepartment {
 			answer+=(list.get(i).getWidth()+"		"+list.get(i).getHeight()+"		"+list.get(i).isInUse()+"		"+list.get(i).getBrand()+"		\n");;
 			
 		}
-		answer+="TOTAL: "+ list.size() + " vallas";
+		answer+="TOTAL: "+ list.size() + " Billboards";
 		return answer;
 	}
 	
