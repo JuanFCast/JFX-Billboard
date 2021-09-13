@@ -69,11 +69,11 @@ public class Main {
 		System.out.print("What is the brand of the Billboard: ");
 		String brand = br.readLine();
 		
-		double weight = Double.parseDouble(w);
+		double width = Double.parseDouble(w);
 		double height = Double.parseDouble(h);
 		boolean inUse = Boolean.parseBoolean(use);
 		
-		if(infra.addBillboard(weight, height, inUse, brand)) {
+		if(infra.addBillboard(width, height, inUse, brand)) {
 			System.out.println("The billboard has been added successfully");
 		} else {
 			System.out.println("An error occurred while registering the new Billboard");
